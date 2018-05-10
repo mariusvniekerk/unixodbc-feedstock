@@ -23,8 +23,10 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - libiconv
+    - libedit
   run:
     - libiconv
+    - libedit
 
 test:
   commands:
