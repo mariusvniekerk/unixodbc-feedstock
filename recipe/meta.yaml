@@ -12,12 +12,21 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
+  run_exports:
+    - {{ pin_subpackage('unixodbc', max_pin='x.x') }}
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - libiconv
+    - libedit
+  run:
+    - libiconv
+    - libedit
 
 test:
   commands:
@@ -44,3 +53,4 @@ extra:
   recipe-maintainers:
     - MathMagique
     - xhochy
+    - mvanniekerk
